@@ -10,6 +10,7 @@ import smtplib
 import requests
 from bs4 import BeautifulSoup
 
+# Arquivo com senhas e emails.
 import config
 
 URL = "http://www.adorocinema.com/filmes/todos-filmes/notas-espectadores/"
