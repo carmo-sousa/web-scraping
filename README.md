@@ -24,6 +24,12 @@ Troque os campos de acordo com os seus dados.
 
 ## Execução
 
+<<<<<<< HEAD
 Entre na pasta do projeto e de o comando `python main.py`.
 
 FIM!!
+=======
+Entre na pasta do projeto e de o comando `cd caminho/do/projeto`.
+
+Depois disso basta rodar `python main.py`.
+>>>>>>> fb72d6ed959831c9bb3e66a2b695f2d3a3481adc
