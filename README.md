@@ -17,7 +17,9 @@ Ter o [requests](https://pypi.org/project/requests/).
 
 Crie um arquivo com o nome `config.py` e salve suas credencias dentro.
 ![Exemplo do arquivo config.py](/img/exemplo-01.png)
+
 Troque os campos de acordo com os seus dados.
 
 ## Execução
+
 Entre na pasta do projeto e de o comando `python main.py`.
