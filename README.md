@@ -10,7 +10,9 @@ Habilitar o uso de apps menos seguros.
 2. Desative a opção Permitir aplicativos menos seguros.
 
 Ter o [python 3.x](https://www.python.org/).
+
 Ter o [BeautfulSoup4](https://pypi.org/project/beautifulsoup4/).
+
 Ter o [requests](https://pypi.org/project/requests/).
 
 ## Configurando
