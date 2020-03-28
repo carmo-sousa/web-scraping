@@ -6,17 +6,14 @@ E envia um email com uma lista de filmes
 """
 import email.message
 import smtplib
-
 import requests
 from bs4 import BeautifulSoup
 
-# Arquivo com senhas e emails.
-import config
-
-URL = "http://www.adorocinema.com/filmes/todos-filmes/notas-espectadores/"
+from constantes import TEMPLATE, URL
+import config       # Arquivo com senhas e emails.
 
 
-def get_filmes(url):
+def get_filmes(url: str) -> list:
     """
     Faz a requisição e devolve uma lista de tuplas onde cada item da tupla é o
     título, ano de lançamento e duração respectivamente.
@@ -33,9 +30,9 @@ def get_filmes(url):
     # Filtra a div com a lista dos filmes
     lista_de_filmes = soup.find_all('div', class_='data_box')
 
-    filmes = []
+    filmes: list = []
 
-    # Filtra o título, ano de lançamento e o título do filme
+    # Filtra o título, ano de lançamento e a duração do filme
     # Cria uma tupla com os dados e adiciona na variavel filmes
     for filme in lista_de_filmes:
         title = filme.find('h2').text.strip()
@@ -45,59 +42,20 @@ def get_filmes(url):
     return filmes
 
 
-def monta_msg(list_filmes):
+def monta_template(list_filmes: list) -> str:
     """Monta o template html com a lista dos filmes"""
-    template_lista = ''
+    template_lista: str = ''
 
     for filme in list_filmes:
-        template_lista += "<tr>\n<td>{0}</td>\n<td>{1}</td>\n<td>{2}</td>\n</tr>".format(filme[0], filme[1], filme[2])
-        pass
+        template_lista += (
+            "<tr>\n<td>{0}</td>\n<td>{1}</td>\n<td>{2}</td>\n</tr>"
+            .format(filme[0], filme[1], filme[2])
+        )
 
-    template = """<DOCTYPE html>
-    <html lang="pt-br">
-        <head>
-            <title>Lista dos melhores filmes</title>
-
-            <style>
-                * {
-                    font-family: sans-serif;
-                }
-                h1 {
-                    font-family: sans-serif;
-                }
-                table {
-                    border: 1px solid #333333;
-                    border-collapse: collapse;
-                }
-                table thead {
-                    background: sandybrown;
-                }
-                td {
-                    border: 1px solid #333333;
-                    padding: 5px;
-                }
-            </style>
-        </head>
-        <body>
-            <h1>Lista com os 20 melhores filmes de todos os tempos!</h1>
-            <table>
-                <thead>
-                    <tr>
-                        <td>Título</td>
-                        <td>Lançamento</td>
-                        <td>Descrição</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    data_list
-                </tbody>
-            </table>
-        </body>
-    </html>"""
-    return template.replace('data_list', template_lista)  # Troca o data_list pela lista dos filmes
+    return TEMPLATE.replace('data_list', template_lista)  # Troca o data_list pela lista dos filmes
 
 
-def envia_email(filmes, msg):
+def envia_email(template):
     """Responsável por enviar o e-mail"""
     msg = email.message.Message()
 
@@ -107,7 +65,7 @@ def envia_email(filmes, msg):
     msg['Subject'] = 'Lista de filmes'
 
     msg.add_header('Content-Type', 'text/html')
-    msg.set_payload(message)
+    msg.set_payload(template)
 
     server = smtplib.SMTP('smtp.gmail.com: 587')
     server.starttls()
@@ -118,7 +76,7 @@ def envia_email(filmes, msg):
     print(f'Successfully sent email to {msg["To"]}')
 
 
-filmes = get_filmes(URL)
-message = monta_msg(filmes)
+filmes: list = get_filmes(URL)
+template: str = monta_template(filmes)
 
-envia_email(filmes, message)
+envia_email(template)
