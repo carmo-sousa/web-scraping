@@ -22,6 +22,7 @@ def get_filmes(url: str) -> list:
 
     # Faz a requisição e retorna o texto HTML
     get = requests.get(url).text
+    # print(get)
 
     # Cria uma instancia de BeautifulSoup passando a variavel get no
     # primeiro parametro e no segundo parametro é passado o tipo de arquivo
@@ -38,6 +39,7 @@ def get_filmes(url: str) -> list:
         title = filme.find('h2').text.strip()
         lancamento, duracao = filme.find('div', class_='oflow_a').text.strip().split('\n')
         filmes.append((title, lancamento, duracao))
+    
 
     return filmes
 
@@ -55,17 +57,16 @@ def monta_template(list_filmes: list) -> str:
     return TEMPLATE.replace('data_list', template_lista)  # Troca o data_list pela lista dos filmes
 
 
-def envia_email(template):
+def envia_email(mensagem: str) -> None:
     """Responsável por enviar o e-mail"""
-    msg = email.message.Message()
-
     password = config.PASSWORD
+
+    msg = email.message.Message()
     msg['From'] = config.EMAIL_FROM
     msg['To'] = config.EMAIL_TO
     msg['Subject'] = 'Lista de filmes'
-
     msg.add_header('Content-Type', 'text/html')
-    msg.set_payload(template)
+    msg.set_payload(mensagem)
 
     server = smtplib.SMTP('smtp.gmail.com: 587')
     server.starttls()
@@ -78,5 +79,6 @@ def envia_email(template):
 
 filmes: list = get_filmes(URL)
 template: str = monta_template(filmes)
+print(template)
 
 envia_email(template)

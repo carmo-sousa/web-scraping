@@ -29,9 +29,9 @@ TEMPLATE = """
         <table>
             <thead>
                 <tr>
-                    <td>Título</td>
+                    <td>Titulo</td>
                     <td>Lançamento</td>
-                    <td>Descrição</td>
+                    <td>Descricao</td>
                 </tr>
             </thead>
             <tbody>
