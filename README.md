@@ -3,6 +3,8 @@
 Faz uma requisição para [Adoro cinema](http://www.adorocinema.com/filmes/todos-filmes/notas-espectadores/)
 e envia uma email com um template HTML contendo a lista dos filmes.
 
+![Exemplo da resposta](img/exemplo-02.png)
+
 ## Pré requisitos
 
 Habilitar o uso de apps menos seguros.
