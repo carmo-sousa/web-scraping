@@ -29,8 +29,9 @@ Troque os campos de acordo com os seus dados.
 O modulo `smtplib.py` está com o modo de encode 'ASCII'
 sendo assim não reconhece alguns caracteres e pode gerar um erro.
 
-Uma forma de corrigir é editando o modulo
 ![Exemplo de como o arquivo deve ficar depois da alteração](img/error.png)
+
+Uma forma de corrigir é editando o modulo
 trocando o trecho `msg = _fix_eols(msg).encode('ASCII')` por `msg = _fix_eols(msg).encode('utf-8')`
 que o erro deve ser resolvido.
 
