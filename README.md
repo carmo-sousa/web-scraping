@@ -19,8 +19,8 @@ Ter o [requests](https://pypi.org/project/requests/).
 
 ## Configurando
 
-Crie um arquivo com o nome `config.py` e salve suas credencias dentro.
-![Exemplo do arquivo config.py](/img/exemplo-01.png)
+Edite o arquivo  `credentials.conf` mudando o valor das chaves com suas credenciais.
+![Exemplo do arquivo config.py](./img/exemplo-01.png)
 
 Troque os campos de acordo com os seus dados.
 
