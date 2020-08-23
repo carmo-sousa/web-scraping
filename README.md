@@ -22,6 +22,16 @@ Crie um arquivo com o nome `config.py` e salve suas credencias dentro.
 
 Troque os campos de acordo com os seus dados.
 
+## Atenção
+
+O modulo `smtplib.py` está com o modo de encode 'ASCII'
+sendo assim não reconhece alguns caracteres e pode gerar um erro.
+
+Uma forma de corrigir é editando o modulo
+![Exemplo de como o arquivo deve ficar depois da alteração](img/error.png)
+trocando o trecho `msg = _fix_eols(msg).encode('ASCII')` por `msg = _fix_eols(msg).encode('utf-8')`
+que o erro deve ser resolvido.
+
 ## Execução
 
 Entre na pasta do projeto e de o comando `python main.py`.

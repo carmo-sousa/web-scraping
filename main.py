@@ -6,11 +6,12 @@ E envia um email com uma lista de filmes
 """
 import email.message
 import smtplib
-import requests
-from bs4 import BeautifulSoup
 
+import requests
+
+import config  # Arquivo com senhas e emails.
+from bs4 import BeautifulSoup
 from constantes import TEMPLATE, URL
-import config       # Arquivo com senhas e emails.
 
 
 def get_filmes(url: str) -> list:
@@ -37,9 +38,9 @@ def get_filmes(url: str) -> list:
     # Cria uma tupla com os dados e adiciona na variavel filmes
     for filme in lista_de_filmes:
         title = filme.find('h2').text.strip()
-        lancamento, duracao = filme.find('div', class_='oflow_a').text.strip().split('\n')
+        lancamento, duracao = filme.find(
+            'div', class_='oflow_a').text.strip().split('\n')
         filmes.append((title, lancamento, duracao))
-    
 
     return filmes
 
@@ -54,7 +55,8 @@ def monta_template(list_filmes: list) -> str:
             .format(filme[0], filme[1], filme[2])
         )
 
-    return TEMPLATE.replace('data_list', template_lista)  # Troca o data_list pela lista dos filmes
+    # Troca o data_list pela lista dos filmes
+    return TEMPLATE.replace('data_list', template_lista)
 
 
 def envia_email(mensagem: str) -> None:
