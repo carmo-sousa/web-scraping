@@ -4,14 +4,17 @@ Web scraping
 Script que faz uma requisição para uma determinada URL
 E envia um email com uma lista de filmes
 """
+import configparser
 import email.message
 import smtplib
 
 import requests
-
-import config  # Arquivo com senhas e emails.
 from bs4 import BeautifulSoup
+
 from constantes import TEMPLATE, URL
+
+config = configparser.ConfigParser()
+config.read('credentials.conf')
 
 
 def get_filmes(url: str) -> list:
@@ -61,11 +64,11 @@ def monta_template(list_filmes: list) -> str:
 
 def envia_email(mensagem: str) -> None:
     """Responsável por enviar o e-mail"""
-    password = config.PASSWORD
+    password = config.get('FROM', 'password')
 
     msg = email.message.Message()
-    msg['From'] = config.EMAIL_FROM
-    msg['To'] = config.EMAIL_TO
+    msg['From'] = config.get("FROM", "mail_from")
+    msg['To'] = config.get("TO", "mail_to")
     msg['Subject'] = 'Lista de filmes'
     msg.add_header('Content-Type', 'text/html')
     msg.set_payload(mensagem)
@@ -81,6 +84,5 @@ def envia_email(mensagem: str) -> None:
 
 filmes: list = get_filmes(URL)
 template: str = monta_template(filmes)
-print(template)
 
 envia_email(template)
