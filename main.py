@@ -11,7 +11,7 @@ import smtplib
 import requests
 from bs4 import BeautifulSoup
 
-from constantes import TEMPLATE, URL
+from template import TEMPLATE
 
 config = configparser.ConfigParser()
 config.read('credentials.conf')
@@ -82,7 +82,7 @@ def envia_email(mensagem: str) -> None:
     print(f'Successfully sent email to {msg["To"]}')
 
 
-filmes: list = get_filmes(URL)
+filmes: list = get_filmes(config.get('URL', 'url'))
 template: str = monta_template(filmes)
 
 envia_email(template)

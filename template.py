@@ -31,7 +31,7 @@ TEMPLATE = """
                 <tr>
                     <td>Titulo</td>
                     <td>Lançamento</td>
-                    <td>Descricao</td>
+                    <td>Descrição</td>
                 </tr>
             </thead>
             <tbody>
@@ -41,5 +41,3 @@ TEMPLATE = """
     </body>
 </html>
 """
-
-URL = "http://www.adorocinema.com/filmes/todos-filmes/notas-espectadores/"
