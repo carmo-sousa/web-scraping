@@ -5,6 +5,7 @@ e retorna uma lista com os melhores filmes de todos os tempos
 import requests
 from bs4 import BeautifulSoup
 
+
 def movies(url):
     get = requests.get(url).text
     soup = BeautifulSoup(get, "html.parser")
