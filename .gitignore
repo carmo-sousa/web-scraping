@@ -2,3 +2,4 @@ config.py
 credencials.conf
 .idea/
 __pycache__
+.env

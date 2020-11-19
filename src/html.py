@@ -1,5 +1,9 @@
-TEMPLATE = """
-<DOCTYPE html>
+"""
+Responsável Por montar o HTML com a lista de filmes
+"""
+
+HTML = """
+<!DOCTYPE html>
 <html lang="pt-br">
     <head>
         <title>Lista dos melhores filmes</title>
@@ -17,6 +21,9 @@ TEMPLATE = """
             }
             table thead {
                 background: sandybrown;
+            }
+            table thead tr td {
+                font-weight: bold;
             }
             td {
                 border: 1px solid #333333;
@@ -41,3 +48,14 @@ TEMPLATE = """
     </body>
 </html>
 """
+
+
+def html(movies):
+    template = []
+
+    for movie in movies:
+        template.append(
+            f"<tr><td>{movie[0]}</td><td>{movie[1]}</td><td>{movie[2]}</td></tr>"
+        )
+
+    return HTML.replace("data_list", "\n".join(template))
