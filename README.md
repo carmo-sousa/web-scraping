@@ -1,42 +1,48 @@
 # Script para web scraping
 
+![Flask](https://img.shields.io/static/v1?label=Sousa&message=Web%20Scraping&style=flat&color=E59500&labelColor=green)
+[![GitHub license](https://img.shields.io/github/license/Carmo-sousa/web-scraping)](https://github.com/Carmo-sousa/web-scraping/blob/master/LICENSE)
+
 Faz uma requisição para [Adoro cinema](http://www.adorocinema.com/filmes/todos-filmes/notas-espectadores/)
-e envia uma email com um template HTML contendo a lista dos filmes.
+e envia uma email contendo a lista dos filmes.
 
-![Exemplo da resposta](img/exemplo-02.png)
+![Logo](src/img/logo.svg)
 
-## Pré requisitos
+## Setup
 
-Habilitar o uso de apps menos seguros.
-1. Vá para a seção [Acesso a app menos seguro](https://myaccount.google.com/lesssecureapps) da sua Conta do Google. Talvez seja necessário fazer login.
-2. Desative a opção Permitir aplicativos menos seguros.
+1. Vá para a seção [Acesso a app menos seguro](https://myaccount.google.com/lesssecureapps) da sua Conta do Google e ative a opção de aplicativos menos seguros.
+2. Ter o [python 3.x](https://www.python.org/) instalado em sua maquina.
+3. Clonar o repositório `git clone git@github.com:Carmo-sousa/web-scraping.git`
+4. Entrar no diretório `cd web-scraping`
+5. Executar `pip install -r requirements.txt` dentro do diretório do projeto.
 
-Ter o [python 3.x](https://www.python.org/).
+Criar um arquivos com o nome `.env` na raiz do projeto com os dados abaixo trocando pelas suas credenciais.
 
-Ter o [BeautfulSoup4](https://pypi.org/project/beautifulsoup4/).
+```.env
+MAIL_FROM = exemplo@email.com
+PASSWORD = exemplo_senha
+MAIL_TO = exemplo@email.com
 
-Ter o [requests](https://pypi.org/project/requests/).
-
-## Configurando
-
-Edite o arquivo  `credentials.conf` mudando o valor das chaves com suas credenciais.
-![Exemplo do arquivo config.py](./img/exemplo-01.png)
-
-Troque os campos de acordo com os seus dados.
-
-## Atenção
-
-O modulo `smtplib.py` está com o modo de encode 'ASCII'
-sendo assim não reconhece alguns caracteres e pode gerar um erro.
-
-![Exemplo de como o arquivo deve ficar depois da alteração](img/error.png)
-
-Uma forma de corrigir é editando o modulo
-trocando o trecho `msg = _fix_eols(msg).encode('ASCII')` por `msg = _fix_eols(msg).encode('utf-8')`
-que o erro deve ser resolvido.
+URL = http://www.adorocinema.com/filmes/todos-filmes/notas-espectadores/
+```
 
 ## Execução
 
-Entre na pasta do projeto e de o comando `python main.py`.
+Basta executar o comando `python app.py` na raiz do projeto.
 
-FIM!!
+## Contribuir
+
+Quer contribuir com o projeto? [Confira o passo a passo](./CONTRIBUTING.md)
+Quer ver o que está por vir? [Acompanhe aqui](https://github.com/Carmo-sousa/web-scraping/projects)
+
+## Versionamento
+
+Esse projeto não possui um sistema de versionamento.
+
+## Histórico
+
+Da uma olhada na aba [Releases](https://github.com/Carmo-sousa/web-scraping/releases) pra acompanhar as alterações feitas no projeto.
+
+## Licença do Projeto
+
+[MIT License](./LICENSE) © Rômulo do Carmo Sousa
