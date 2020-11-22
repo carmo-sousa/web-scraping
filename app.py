@@ -9,7 +9,7 @@ import os
 from dotenv import load_dotenv
 
 from src.email import mail
-from src.filme import movies
+from src.movie import movies
 from src.html import html
 
 load_dotenv()
@@ -30,7 +30,7 @@ def app():
     mount_html = html(get_movies)
 
     print("⚙ Enviando o e-mail...")
-    mail(mount_html,HOST, PORT, USER, PASSWORD, TO)
+    mail(mount_html, HOST, PORT, USER, PASSWORD, TO)
     print("✔ E-mail enviado!")
 
 

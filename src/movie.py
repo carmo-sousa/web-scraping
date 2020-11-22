@@ -13,10 +13,10 @@ def movies(url):
 
     movies = []
 
-    for filme in div_movies:
-        title = filme.find("h2").text.strip()
+    for movie in div_movies:
+        title = movie.find("h2").text.strip()
         release, movie_time = (
-            filme.find("div", class_="oflow_a").text.strip().split("\n")
+            movie.find("div", class_="oflow_a").text.strip().split("\n")
         )
         movies.append((title, release, movie_time))
 
