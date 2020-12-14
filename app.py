@@ -17,8 +17,6 @@ load_dotenv()
 
 
 def app():
-    HOST = os.getenv("HOST")
-    PORT = os.getenv("PORT")
     USER = os.getenv("MAIL_FROM")
     PASSWORD = os.getenv("PASSWORD")
     TO = os.getenv("MAIL_TO")
@@ -31,14 +29,15 @@ def app():
     mount_html = html(get_movies)
 
     print("⚙ Enviando o e-mail...")
-    mail(mount_html, HOST, PORT, USER, PASSWORD, TO)
+    mail(mount_html, USER, PASSWORD, TO)
     print("✔ E-mail enviado!")
 
+app()
 
-sched = BlockingScheduler()
+# sched = BlockingScheduler()
 
-@sched.scheduled_job('interval', minutes=1)
-def start():
-    app()
+# @sched.scheduled_job('interval', minutes=1)
+# def start():
+#     app()
 
-sched.start()
+# sched.start()

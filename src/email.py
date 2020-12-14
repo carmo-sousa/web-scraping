@@ -8,9 +8,12 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
 
-def mail(message, host, port, user, password, mail_to):
+def mail(message, user, password, mail_to):
 
-    server = smtplib.SMTP(host, port)
+    HOST = "smtp.gmail.com"
+    PORT = "587"
+
+    server = smtplib.SMTP(HOST, PORT)
     server.ehlo()
     server.starttls()
     server.login(user, password)
