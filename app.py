@@ -35,11 +35,10 @@ def app():
     print("✔ E-mail enviado!")
 
 
-if __name__ == "__main__":
-    sched = BlockingScheduler()
+sched = BlockingScheduler()
 
-    @sched.scheduled_job('interval', minutes=1)
-    def start():
-        app()
-    
-    sched.start()
+@sched.scheduled_job('interval', minutes=1)
+def start():
+    app()
+
+sched.start()
