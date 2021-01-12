@@ -7,7 +7,6 @@ E envia um email com uma lista de filmes
 import os
 
 from dotenv import load_dotenv
-from apscheduler.schedulers.blocking import BlockingScheduler
 
 from src.email import mail
 from src.movie import movies
@@ -16,7 +15,7 @@ from src.html import html
 load_dotenv()
 
 
-def app():
+def run():
     USER = os.getenv("MAIL_FROM")
     PASSWORD = os.getenv("PASSWORD")
     TO = os.getenv("MAIL_TO")
@@ -31,13 +30,3 @@ def app():
     print("⚙ Enviando o e-mail...")
     mail(mount_html, USER, PASSWORD, TO)
     print("✔ E-mail enviado!")
-
-app()
-
-# sched = BlockingScheduler()
-
-# @sched.scheduled_job('interval', minutes=1)
-# def start():
-#     app()
-
-# sched.start()
