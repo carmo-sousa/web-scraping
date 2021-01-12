@@ -1,8 +1,12 @@
 [tool.poetry]
-name = "web-scraping"
+name = "scraping"
 version = "0.1.0"
-description = ""
+description = "Pega uma lista de filmes e envia por email."
+license = "MIT"
+readme = "README.md"
+repository = "https://github.com/Carmo-sousa/web-scraping"
 authors = ["Rômulo do Carmo Sousa <carmosousa20@outlook.com>"]
+include = ["CONTRIBUTING.md"]
 
 [tool.poetry.dependencies]
 python = "^3.6"
@@ -11,6 +15,7 @@ requests = "^2.25.1"
 beautifulsoup4 = "^4.9.3"
 
 [tool.poetry.dev-dependencies]
+black = "^20.8b1"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
