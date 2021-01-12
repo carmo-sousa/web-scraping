@@ -1,5 +1,7 @@
 config.py
 credencials.conf
 .idea/
-__pycache__
+__pycache__/
+sendgrid.env
+.vscode/
 .env
