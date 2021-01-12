@@ -6,7 +6,7 @@
 Faz uma requisição para [Adoro cinema](http://www.adorocinema.com/filmes/todos-filmes/notas-espectadores/)
 e envia uma email contendo a lista dos filmes.
 
-![Logo](src/img/logo.svg)
+![Logo](img/logo.svg)
 
 ## Setup
 
