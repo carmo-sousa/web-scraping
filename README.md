@@ -28,7 +28,7 @@ URL = http://www.adorocinema.com/filmes/todos-filmes/notas-espectadores/
 
 ## Execução
 
-Basta executar o comando `python app.py` na raiz do projeto.
+Basta executar o comando `python -m scraping` na raiz do projeto.
 
 ## Contribuir
 
