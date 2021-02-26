@@ -11,10 +11,10 @@ e envia uma email contendo a lista dos filmes.
 ## Setup
 
 1. Vá para a seção [Acesso a app menos seguro](https://myaccount.google.com/lesssecureapps) da sua Conta do Google e ative a opção de aplicativos menos seguros.
-2. Ter o [python 3.x](https://www.python.org/) instalado em sua maquina.
+2. Ter o [python 3.6 ou superior](https://www.python.org/) instalado em sua maquina.
 3. Clonar o repositório `git clone git@github.com:Carmo-sousa/web-scraping.git`
 4. Entrar no diretório `cd web-scraping`
-5. Executar `pip install -r requirements.txt` dentro do diretório do projeto.
+5. Executar `pip install -r requirements.txt`.
 
 Criar um arquivos com o nome `.env` na raiz do projeto com os dados abaixo trocando pelas suas credenciais.
 
@@ -28,7 +28,7 @@ URL = http://www.adorocinema.com/filmes/todos-filmes/notas-espectadores/
 
 ## Execução
 
-Basta executar o comando `python -m scraping` na raiz do projeto.
+Basta executar o comando `python -m scraping`.
 
 ## Contribuir
 
