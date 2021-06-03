@@ -1,7 +1,7 @@
+import logging
 import os
 
 from dotenv import load_dotenv
-import logging
 
 load_dotenv()
 
@@ -11,7 +11,9 @@ logging.basicConfig(
     datefmt="%m-%d-%Y %H:%M:%S",
 )
 
-USER = os.getenv("MAIL_FROM")
-PASSWORD = os.getenv("PASSWORD")
-TO = os.getenv("MAIL_TO")
-URL = os.getenv("URL")
+
+class Config:
+    USER = os.getenv("MAIL_FROM")
+    PASSWORD = os.getenv("PASSWORD")
+    TO = os.getenv("MAIL_TO")
+    URL = os.getenv("URL")

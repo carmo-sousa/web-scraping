@@ -53,9 +53,9 @@ HTML = """
 def html(movies):
     template = []
 
-    for movie in movies:
+    for title, date, description in movies:
         template.append(
-            f"<tr><td>{movie[0]}</td><td>{movie[1]}</td><td>{movie[2]}</td></tr>"
+            f"<tr><td>{title}</td><td>{date}</td><td>{description}</td></tr>"
         )
 
     return HTML.replace("data_list", "\n".join(template))
